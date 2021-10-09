@@ -21,14 +21,13 @@ public class MakeChange {
 		double itemCost = 0.0;
 		double moneyGiven = 0.0;
 		String again;
-//		String moneyReturned = "You are receiving back:";
 		boolean repeat = true;
 
 		// Repeats while user wants to "buy" more stuff.
 		while (repeat == true) {
 
 			String moneyReturned = "You are receiving back:";
-			
+
 			// User Story #1
 			// The user is prompted asking for the price of the item.
 			itemCost = askCost(itemCost);
@@ -63,10 +62,10 @@ public class MakeChange {
 			int coin1;
 			double remainder = 0.0;
 
-
 			if (moneyGiven == itemCost) {
 				System.out.println("\nThank you for giving exact change.");
 			} else if (moneyGiven > itemCost) {
+				
 				remainder = (moneyGiven - itemCost) % 20;
 
 				if ((moneyGiven - itemCost) / 20 != 0 && ((moneyGiven - itemCost) / 20) >= 1) {
@@ -77,8 +76,7 @@ public class MakeChange {
 					// Captures punctuation
 					if (remainder != 0) {
 						moneyReturned += (" " + bill20 + " twenty dollar bill,");
-					}
-					else {
+					} else {
 						moneyReturned += (" " + bill20 + " twenty dollar bill.");
 					}
 				}
@@ -87,12 +85,11 @@ public class MakeChange {
 					bill10 = (int) (remainder / 10);
 
 					remainder = (remainder % 10);
-					
+
 					// Captures punctuation
 					if (remainder != 0) {
 						moneyReturned += (" " + bill10 + " ten dollar bill,");
-					}
-					else {
+					} else {
 						moneyReturned += (" " + bill10 + " ten dollar bill.");
 					}
 				}
@@ -101,12 +98,11 @@ public class MakeChange {
 					bill5 = (int) (remainder / 5);
 
 					remainder = (remainder % 5);
-					
+
 					// Captures punctuation
 					if (remainder != 0) {
 						moneyReturned += (" " + bill5 + " five dollar bill,");
-					}
-					else {
+					} else {
 						moneyReturned += (" " + bill5 + " five dollar bill.");
 					}
 				}
@@ -115,26 +111,24 @@ public class MakeChange {
 					bill1 = (int) (remainder / 1);
 
 					remainder = (remainder) % 1;
-					
+
 					// Captures punctuation
 					if (remainder != 0) {
 						moneyReturned += (" " + bill1 + " one dollar bill,");
-					}
-					else {
+					} else {
 						moneyReturned += (" " + bill1 + " one dollar bill.");
 					}
 				}
 
 				if ((moneyGiven - itemCost) / 1 != 0 && (remainder / 0.25) >= 1) {
 					coin25 = (int) (remainder / 0.25);
-					
+
 					remainder = (remainder) % 0.25;
-					
+
 					// Captures punctuation
 					if (remainder != 0) {
 						moneyReturned += (" " + coin25 + " quarter,");
-					}
-					else {
+					} else {
 						moneyReturned += (" " + coin25 + " quarter.");
 					}
 				}
@@ -143,36 +137,35 @@ public class MakeChange {
 					coin10 = (int) (remainder / 0.10);
 
 					remainder = (remainder) % 0.10;
-					
+
 					// Captures punctuation
 					if (remainder != 0) {
 						moneyReturned += (" " + coin10 + " dime,");
-					}
-					else {
+					} else {
 						moneyReturned += (" " + coin10 + " dime.");
 					}
 				}
 
 				if ((moneyGiven - itemCost) / 1 != 0 && (remainder / 0.05) >= 1) {
 					coin5 = (int) (remainder / 0.05);
-					
+
 					remainder = (remainder) % 0.05;
-				
+
 					// Captures punctuation
 					if (remainder != 0) {
 						moneyReturned += (" " + coin5 + " nicle,");
-					}
-					else {
+					} else {
 						moneyReturned += (" " + coin5 + " nickle.");
 					}
 				}
-				
-				// Changed if condition to account for when remainder needs to round up to get the last cent.
+
+				// Changed if condition to account for when remainder needs to round up to get
+				// the last cent.
 				// i.e. changed (remainder / 0.01) >= 1 to (remainder / 0.01) != 0
 				if ((moneyGiven - itemCost) / 1 != 0 && (remainder / 0.01) != 0) {
 
 					int remainderRound;
-					
+
 					System.out.println("HIT PENNY");
 					System.out.println("Penny remainder: " + remainder);
 
@@ -188,20 +181,16 @@ public class MakeChange {
 					remainder = Math.round(remainder * 100.0) / 100.0;
 
 					coin1 = (int) (remainder / 0.01);
-					
+
 					// Captures punctuation
-					if(coin1 > 1) {
+					if (coin1 > 1) {
 						moneyReturned += (" " + coin1 + " pennies.");
-					}
-					else {
+					} else {
 						moneyReturned += (" " + coin1 + " penny.");
 					}
-
 				}
-
-				
 			}
-			
+
 			System.out.println("\n" + moneyReturned);
 
 			System.out.print("\nWould you like to purchase something else? (Y or N) ");
