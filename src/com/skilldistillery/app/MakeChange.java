@@ -69,27 +69,26 @@ public class MakeChange {
 			} else if (moneyGiven > itemCost) {
 
 				remainder = (moneyGiven - itemCost) % 20;
-				
+
 				// Assign actual over paid value
 				overPaid = moneyGiven - itemCost;
-				
+
 				// Rounds remainder to 2 decimals.
 				remainder = remainderRound(remainder);
-				
-			
+
 				// When if statement meets condition, calculate bills owed per denomination.
-				if (overPaid / 20 != 0 && (overPaid / 20) >= 1) {
-					
+				if (overPaid / 20 >= 1) {
+
 					// Calculate number of $20 bills to return.
 					bill20 = (int) ((moneyGiven - itemCost) / 20);
 
 					// Captures punctuation
 					if (bill20 > 0) {
 						moneyReturned += (" " + bill20 + " twenty dollar bill,");
-					} 
+					}
 				}
 
-				if (overPaid / 10 != 0 && (remainder / 10) >= 1) {
+				if (remainder / 10 >= 1) {
 					bill10 = (int) (remainder / 10);
 
 					// Calculate number of $10 bills to return.
@@ -98,11 +97,11 @@ public class MakeChange {
 					// Captures punctuation
 					if (bill10 > 0) {
 						moneyReturned += (" " + bill10 + " ten dollar bill,");
-					} 
+					}
 				}
 
-				if (overPaid / 5 != 0 && (remainder / 5) >= 1) {
-					
+				if (remainder / 5 >= 1) {
+
 					// Calculate number of $5 bills to return.
 					bill5 = (int) (remainder / 5);
 
@@ -111,16 +110,16 @@ public class MakeChange {
 					// Captures punctuation
 					if (bill5 > 0) {
 						moneyReturned += (" " + bill5 + " five dollar bill,");
-					} 
+					}
 				}
 
-				if (overPaid / 1 != 0 && (remainder / 1) >= 1) {
-					
+				if (remainder / 1 >= 1) {
+
 					// Calculate number of $1 bills to return.
 					bill1 = (int) (remainder / 1);
 
 					remainder = (remainder) % 1;
-					
+
 					// Rounds remainder to 2 decimals.
 					remainder = remainderRound(remainder);
 
@@ -130,13 +129,13 @@ public class MakeChange {
 					}
 				}
 
-				if (overPaid / 1 != 0 && (remainder / 0.25) >= 1) {
-					
+				if (remainder / 0.25 >= 1) {
+
 					// Calculate number of quarters to return.
 					coin25 = (int) (remainder / 0.25);
-					
+
 					remainder = (remainder) % 0.25;
-					
+
 					// Rounds remainder to 2 decimals.
 					remainder = remainderRound(remainder);
 
@@ -146,13 +145,13 @@ public class MakeChange {
 					}
 				}
 
-				if (overPaid / 1 != 0 && (remainder / 0.10) >= 1) {
-					
+				if (remainder / 0.10 >= 1) {
+
 					// Calculate number of dimes to return.
 					coin10 = (int) (remainder / 0.10);
 
 					remainder = (remainder) % 0.10;
-					
+
 					// Rounds remainder to 2 decimals.
 					remainder = remainderRound(remainder);
 
@@ -162,27 +161,27 @@ public class MakeChange {
 					}
 				}
 
-				if (overPaid / 1 != 0 && (remainder / 0.05) >= 1) {
-					
+				if (remainder / 0.05 >= 1) {
+
 					// Calculate number of nickels to return.
 					coin5 = (int) (remainder / 0.05);
-					
+
 					remainder = (remainder) % 0.05;
 
 					// Rounds remainder to 2 decimals.
 					remainder = remainderRound(remainder);
-					
+
 					// Captures punctuation
 					if (coin5 > 0) {
 						moneyReturned += (" " + coin5 + " nickel,");
-					} 
+					}
 				}
 
-				if (overPaid / 1 != 0 && (remainder / 0.01) >= 1) {
+				if (remainder / 0.01 >= 1) {
 
 					// Calculate number of pennies to return.
 					coin1 = (int) (remainder / 0.01);
-					
+
 					// Captures punctuation
 					if (coin1 > 1) {
 						moneyReturned += (" " + coin1 + " pennies.");
@@ -234,17 +233,17 @@ public class MakeChange {
 		return moneyGiven;
 	}
 
-	public static double remainderRound (double remainder) {
+	public static double remainderRound(double remainder) {
 		int remainderRound;
 
 		// Cast as int and * 1000 to get last 3 decimals of original remainder
 		remainderRound = (int) (remainder * 1000);
-		
+
 		// Divides by 1000 to turn back in to decimal form 0.xxx & rounds to nearest
 		// hundredth.
 		remainder = remainderRound / 1000.0;
 		remainder = Math.round(remainder * 100.0) / 100.0;
-		
+
 		return remainder;
 	}
 
